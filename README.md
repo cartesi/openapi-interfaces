@@ -6,17 +6,7 @@ HTTP interfaces specified with OpenAPI.
 
 ## Getting Started
 
-Download the [swagger-codegen](https://github.com/swagger-api/swagger-codegen/tree/v3.0.30) cli tool with the following command.
-
-```
-wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.30/swagger-codegen-cli-3.0.30.jar -O swagger-codegen-cli.jar
-```
-
-Then, run the following command to generate the documentation page.
-
-```
-java -jar swagger-codegen-cli.jar generate -l html2 -i dapp.yaml
-```
+To generate the HTML page for the documentation, run `make`.
 
 ## License
 
