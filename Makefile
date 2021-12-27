@@ -15,7 +15,7 @@ SWAGGER_CODEGEN := swagger-codegen-cli.jar
 
 .PHONY: all
 
-DOCS := docs/dapp
+DOCS := docs/dapp docs/dispatcher
 
 all: $(DOCS)
 
