@@ -2,7 +2,7 @@ openapi: 3.0.0
 
 info:
   title: Cartesi HTTP DApp API
-  version: 1.0.0
+  version: 0.1.0
   license:
     name: Apache-2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
