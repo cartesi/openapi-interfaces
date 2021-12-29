@@ -2,7 +2,7 @@ openapi: 3.0.0
 
 info:
   title: Cartesi HTTP DApp API
-  version: 0.1.0
+  version: 0.1.1
   license:
     name: Apache-2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -28,9 +28,9 @@ paths:
               type: object
               properties:
                 metadata:
-                  $ref: 'components.yaml#/Metadata'
+                  $ref: '#/components/schemas/Metadata'
                 payload:
-                  $ref: 'components.yaml#/Payload'
+                  $ref: '#/components/schemas/Payload'
 
       responses:
         '202':
@@ -41,7 +41,7 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: 'components.yaml#/Error'
+                $ref: '#/components/schemas/Error'
 
   /inspect/{payload}:
     get:
@@ -71,11 +71,83 @@ paths:
                   reports:
                     type: array
                     items:
-                      $ref: 'components.yaml#/Report'
+                      $ref: '#/components/schemas/Report'
 
         default:
           description: Error response
           content:
             text/plain:
               schema:
-                $ref: 'components.yaml#/Error'
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Id:
+      type: integer
+      format: uint64
+      description: Identifier encoded as integer.
+      example: 123
+
+    Index:
+      type: integer
+      format: uint64
+      description: Position in the Merkle tree.
+      example: 123
+
+    Payload:
+      type: string
+      description: |
+        Payload in the Ethereum hex binary format.
+        The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
+        For instance, '0xdeadbeef' corresponds to a payload with length 4 and bytes 222, 173, 190, 175.
+      example: '0xdeadbeef'
+
+    Timestamp:
+      type: integer
+      format: uint64
+      description: Unix timestamp in milliseconds.
+      example: 1609459200000
+
+    Address:
+      type: string
+      description: Ethereum address.
+      example: '0x1111111111111111111111111111111111111111'
+
+    Metadata:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        epoch_number:
+          $ref: '#/components/schemas/Id'
+        input_number:
+          $ref: '#/components/schemas/Id'
+        block_number:
+          $ref: '#/components/schemas/Id'
+        timestamp:
+          $ref: '#/components/schemas/Timestamp'
+
+    Voucher:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        payload:
+          $ref: '#/components/schemas/Payload'
+
+    Notice:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/Payload'
+
+    Report:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/Payload'
+
+    Error:
+      type: string
+      description: Detailed error message.
+      example: "The request could not be understood by the server due to malformed syntax"
