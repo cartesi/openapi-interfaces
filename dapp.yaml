@@ -114,15 +114,15 @@ components:
     Metadata:
       type: object
       properties:
-        address:
+        msg_sender:
           $ref: '#/components/schemas/Address'
-        epoch_number:
+        epoch_index:
           $ref: '#/components/schemas/Id'
-        input_number:
+        input_index:
           $ref: '#/components/schemas/Id'
         block_number:
           $ref: '#/components/schemas/Id'
-        timestamp:
+        time_stamp:
           $ref: '#/components/schemas/Timestamp'
 
     Report:
