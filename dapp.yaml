@@ -55,7 +55,10 @@ paths:
         - in: path
           required: true
           name: payload
-          description: String defined by the DApp developer.
+          description: |
+            Payload in the Ethereum hex binary format.
+            The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
+            For instance, '0xdeadbeef' corresponds to a payload with length 4 and bytes 222, 173, 190, 175.
           schema:
             type: string
 
