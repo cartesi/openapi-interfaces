@@ -17,8 +17,9 @@ paths:
       summary: Advance state request
       description: |
         The HTTP-Dispatcher requests the DApp to process an input for the given epoch.
-        This is an asynchrounos call; the DApp should immediately respond and then start processing the input.
-        After the DApp receives this call, it can generate vouchers, notices, and reports by calling the HTTP-Dispatcher API.
+        This is an asynchrounos request.
+        After the DApp receives this request, it can generate vouchers, notices, and reports by calling the HTTP-Dispatcher API.
+        The DApp may send requests to the HTTP-Dispatcher before responding to this request.
         When the DApp finishes processing the input, it should call the finish method from the HTTP-Dispatcher API.
 
       requestBody:
