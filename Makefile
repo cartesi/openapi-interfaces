@@ -9,13 +9,13 @@
 # CONDITIONS OF ANY KIND, either express or implied. See the License for the
 # specific language governing permissions and limitations under the License.
 
-SWAGGER_CODEGEN_VERSION := 3.0.30
+SWAGGER_CODEGEN_VERSION := 3.0.33
 SWAGGER_CODEGEN_URL := https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/$(SWAGGER_CODEGEN_VERSION)/swagger-codegen-cli-$(SWAGGER_CODEGEN_VERSION).jar
 SWAGGER_CODEGEN := swagger-codegen-cli.jar
 
 .PHONY: all
 
-DOCS := docs/dapp docs/dispatcher
+DOCS := docs/rollup
 
 all: $(DOCS)
 
@@ -25,3 +25,10 @@ $(SWAGGER_CODEGEN):
 docs/%: %.yaml $(SWAGGER_CODEGEN)
 	rm -rf $@
 	java -jar $(SWAGGER_CODEGEN) generate -l html2 -i $< -o $@
+
+clean:
+	rm -rf docs/
+
+
+distclean: clean
+	rm $(SWAGGER_CODEGEN)
