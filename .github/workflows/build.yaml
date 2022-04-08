@@ -30,3 +30,12 @@ jobs:
           files: docs.zip
         env:
           GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/master'
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
