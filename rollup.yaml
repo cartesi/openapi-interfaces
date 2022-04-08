@@ -300,6 +300,7 @@ components:
         Payload in the Ethereum hex binary format.
         The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
         For instance, '0xdeadbeef' corresponds to a payload with length 4 and bytes 222, 173, 190, 175.
+        An empty payload is represented by the string '0x'.
       example: '0xdeadbeef'
 
     Inspect:
