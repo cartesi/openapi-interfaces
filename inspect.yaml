@@ -57,9 +57,7 @@ components:
       type: object
       properties:
         status:
-          type: string
-          enum: [accept, reject, exception]
-          example: 'accept'
+          $ref: '#/components/schemas/CompletionStatus'
         exception_payload:
           $ref: '#/components/schemas/Payload'
         reports:
@@ -68,6 +66,19 @@ components:
             $ref: '#/components/schemas/Report'
         metadata:
           $ref: '#/components/schemas/InspectMetadata'
+
+    CompletionStatus:
+      type: string
+      description: Whether inspection completed or not (and why not)
+      enum: [
+        Accepted,
+        Rejected,
+        Exception,
+        MachineHalted,
+        CycleLimitExceeded,
+        TimeLimitExceeded,
+      ]
+      example: 'Accepted'
 
     InspectMetadata:
       type: object
