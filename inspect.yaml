@@ -11,7 +11,7 @@ info:
     API that allows the DApp frontend to make inspect-state requests to the DApp backend.
 
 paths:
-  /inspect/{payload}:
+  /{payload}:
     get:
       operationId: inspect
       summary: Send an inspect-state request to the DApp backend.
