@@ -121,7 +121,7 @@ paths:
       description: |
         The DApp backend can call this method to add a new voucher when processing an advance-state request.
         Vouchers are collateral effects actionable in the blockchain.
-        Between calls to the finish method, the voucher method can be called at least 32k times.
+        Between calls to the finish method, the voucher method can be called up to 32k times.
 
         The returned value is the index of the voucher for the current advance-state request.
         In other words, the index counting restarts at every request.
@@ -154,7 +154,7 @@ paths:
       description: |
         The DApp backend can call this method to add a new notice when processing the advance-state request.
         A notice describes any changes to the internal state of the DApp that may be relevant to the blockchain.
-        Between calls to the finish method, the notice method can be called at least 32k times.
+        Between calls to the finish method, the notice method can be called up to 32k times.
 
         The returned value is the index of the notice for the current advance request.
         In other words, the index counting restarts at every request.
