@@ -77,12 +77,12 @@ paths:
         For advance-state requests, the input data contains the advance-state metadata and the payload.
         For inspect-state requests, the input data contains only the payload.
 
-        After processing an rollup request, the DApp-backend should call again the finish method.
+        After processing a rollup request, the DApp back-end should call again the finish method.
         For advance-state requests, depending on the result of the request processing, it should fill the status field of the request body with 'accept' or 'reject'.
         The Rollup HTTP Server ignores the content of the status field for the first finish request and after an inspect-state request.
 
         If the advance-state request is rejected, the vouchers and notices are discarded.
-        In contrast, reports are not discarded in case of reject.
+        In contrast, reports are not discarded in case of rejection.
         When running inside a Cartesi machine, the Cartesi Server Manager reverts the entire state of the machine to what it was before receiving the request.
 
         During a finish call, the next rollup request might not be immediately available.
@@ -152,7 +152,7 @@ paths:
       operationId: addNotice
       summary: Add a new notice.
       description: |
-        The DApp backend can call this method to add a new notice when processing advance-state request.
+        The DApp backend can call this method to add a new notice when processing the advance-state request.
         A notice describes any changes to the internal state of the DApp that may be relevant to the blockchain.
         Between calls to the finish method, the notice method can be called at least 32k times.
 
@@ -285,7 +285,7 @@ components:
     Id:
       type: integer
       format: uint64
-      description: Identifier encoded as integer.
+      description: Identifier encoded as an integer.
       example: 123
 
     Timestamp:
@@ -297,7 +297,7 @@ components:
     Payload:
       type: string
       description: |
-        Payload in the Ethereum hex binary format.
+        The payload in the Ethereum hex binary format.
         The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
         For instance, '0xdeadbeef' corresponds to a payload with length 4 and bytes 222, 173, 190, 175.
         An empty payload is represented by the string '0x'.
