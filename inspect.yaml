@@ -2,7 +2,7 @@ openapi: 3.0.0
 
 info:
   title: Inspect-state HTTP API for Cartesi Rollups
-  version: 0.4.0
+  version: 0.5.1
   license:
     name: Apache-2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -14,7 +14,7 @@ paths:
   /{payload}:
     get:
       operationId: inspect
-      summary: Send an inspect-state request to the DApp backend.
+      summary: Inspect DApp state REST API
       description: |
         This method sends an inspect-state request to the DApp backend passing the payload string in the URL.
         The payload string should be URL-encoded; the inspect server will decode the string to UTF-8.
@@ -37,19 +37,19 @@ paths:
             type: string
 
       responses:
-        '200':
+        "200":
           description: Inspect state response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InspectResponse'
+                $ref: "#/components/schemas/InspectResponse"
 
         default:
           description: Error response.
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
 components:
   schemas:
@@ -57,28 +57,29 @@ components:
       type: object
       properties:
         status:
-          $ref: '#/components/schemas/CompletionStatus'
+          $ref: "#/components/schemas/CompletionStatus"
         exception_payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
         reports:
           type: array
           items:
-            $ref: '#/components/schemas/Report'
+            $ref: "#/components/schemas/Report"
         metadata:
-          $ref: '#/components/schemas/InspectMetadata'
+          $ref: "#/components/schemas/InspectMetadata"
 
     CompletionStatus:
       type: string
       description: Whether inspection completed or not (and why not)
-      enum: [
-        Accepted,
-        Rejected,
-        Exception,
-        MachineHalted,
-        CycleLimitExceeded,
-        TimeLimitExceeded,
-      ]
-      example: 'Accepted'
+      enum:
+        [
+          Accepted,
+          Rejected,
+          Exception,
+          MachineHalted,
+          CycleLimitExceeded,
+          TimeLimitExceeded,
+        ]
+      example: "Accepted"
 
     InspectMetadata:
       type: object
@@ -99,13 +100,13 @@ components:
         The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
         For instance, '0xdeadbeef' corresponds to a payload with length 4 and bytes 222, 173, 190, 175.
         An empty payload is represented by the string '0x'.
-      example: '0xdeadbeef'
+      example: "0xdeadbeef"
 
     Report:
       type: object
       properties:
         payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
 
     Error:
       type: string

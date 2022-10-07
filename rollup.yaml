@@ -2,7 +2,7 @@ openapi: 3.0.0
 
 info:
   title: Cartesi Rollup HTTP API
-  version: 0.4.0
+  version: 0.5.1
   license:
     name: Apache-2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -67,7 +67,7 @@ paths:
   /finish:
     post:
       operationId: finish
-      summary: Finish processing the current rollup request and obtain the next one.
+      summary: Finish and get next request
       description: |
         The DApp backend should call this method to start processing rollup requests.
         The Rollup HTTP Server returns the next rollup request in the response body.
@@ -94,17 +94,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Finish'
+              $ref: "#/components/schemas/Finish"
 
       responses:
-        '200':
+        "200":
           description: Finish accepted and next rollup request returned.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RollupRequest'
+                $ref: "#/components/schemas/RollupRequest"
 
-        '202':
+        "202":
           description: Finish accepted but try again to obtain the next request.
 
         default:
@@ -112,12 +112,12 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
   /voucher:
     post:
       operationId: addVoucher
-      summary: Add a new voucher.
+      summary: Add a new voucher
       description: |
         The DApp backend can call this method to add a new voucher when processing an advance-state request.
         Vouchers are collateral effects actionable in the blockchain.
@@ -130,27 +130,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Voucher'
+              $ref: "#/components/schemas/Voucher"
 
       responses:
-        '200':
+        "200":
           description: Created the voucher.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IndexResponse'
+                $ref: "#/components/schemas/IndexResponse"
 
         default:
           description: Error response.
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
   /notice:
     post:
       operationId: addNotice
-      summary: Add a new notice.
+      summary: Add a new notice
       description: |
         The DApp backend can call this method to add a new notice when processing the advance-state request.
         A notice describes any changes to the internal state of the DApp that may be relevant to the blockchain.
@@ -163,27 +163,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Notice'
+              $ref: "#/components/schemas/Notice"
 
       responses:
-        '200':
+        "200":
           description: Created the notice.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IndexResponse'
+                $ref: "#/components/schemas/IndexResponse"
 
         default:
           description: Error response.
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
   /report:
     post:
       operationId: addReport
-      summary: Add a new report.
+      summary: Add a new report
       description: |
         The DApp can call this method to add a new report for the given rollup request.
         A report can be a diagnostic or a log; reports are not discarded when a request is rejected.
@@ -193,10 +193,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Report'
+              $ref: "#/components/schemas/Report"
 
       responses:
-        '200':
+        "200":
           description: Create the report.
 
         default:
@@ -204,12 +204,12 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
   /exception:
     post:
       operationId: registerException
-      summary: Asks the Rollup HTTP Server to register an exception.
+      summary: Register an exception
       description: |
         The DApp should call this method when it cannot proceed with the request processing after an exception happens.
         This method should be the last method ever called by the DApp backend, and it should not expect the call to return.
@@ -219,10 +219,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Exception'
+              $ref: "#/components/schemas/Exception"
 
       responses:
-        '200':
+        "200":
           description: Accepted the exception throw.
 
         default:
@@ -230,7 +230,7 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
 components:
   schemas:
@@ -240,7 +240,7 @@ components:
         status:
           type: string
           enum: [accept, reject]
-          example: 'accept'
+          example: "accept"
 
     RollupRequest:
       type: object
@@ -248,39 +248,39 @@ components:
         request_type:
           type: string
           enum: [advance_state, inspect_state]
-          example: 'advance_state'
+          example: "advance_state"
         data:
           type: object
           oneOf:
-            - $ref: '#/components/schemas/Advance'
-            - $ref: '#/components/schemas/Inspect'
+            - $ref: "#/components/schemas/Advance"
+            - $ref: "#/components/schemas/Inspect"
 
     Advance:
       type: object
       properties:
         metadata:
-          $ref: '#/components/schemas/Metadata'
+          $ref: "#/components/schemas/Metadata"
         payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
 
     Metadata:
       type: object
       properties:
         msg_sender:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         epoch_index:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         input_index:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         block_number:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         timestamp:
-          $ref: '#/components/schemas/Timestamp'
+          $ref: "#/components/schemas/Timestamp"
 
     Address:
       type: string
       description: Ethereum address.
-      example: '0x1111111111111111111111111111111111111111'
+      example: "0x1111111111111111111111111111111111111111"
 
     Id:
       type: integer
@@ -301,45 +301,45 @@ components:
         The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
         For instance, '0xdeadbeef' corresponds to a payload with length 4 and bytes 222, 173, 190, 175.
         An empty payload is represented by the string '0x'.
-      example: '0xdeadbeef'
+      example: "0xdeadbeef"
 
     Inspect:
       type: object
       properties:
         payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
 
     Voucher:
       type: object
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
 
     Notice:
       type: object
       properties:
         payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
 
     Report:
       type: object
       properties:
         payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
 
     Exception:
       type: object
       properties:
         payload:
-          $ref: '#/components/schemas/Payload'
+          $ref: "#/components/schemas/Payload"
 
     IndexResponse:
       type: object
       properties:
         index:
-          $ref: '#/components/schemas/Index'
+          $ref: "#/components/schemas/Index"
 
     Index:
       type: integer
