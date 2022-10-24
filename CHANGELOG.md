@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix typos in the documentation
 - Cosmetic documentation updates
+- Improve exception documentation
 
 ## [0.5.0] - 2022-07-20
 

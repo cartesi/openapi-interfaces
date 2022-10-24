@@ -63,6 +63,12 @@ info:
             break
     ```
 
+    In production mode, if the DApp exits the Rollups initialization script will register a Rollup Exception.
+    See [/exception](#api-Default-registerException).
+
+    In host mode, the Cartesi Rollups infrastructure is not able to detect that the DApp exited.
+    It is up to the DApp developer to re-launch the DApp.
+
 paths:
   /finish:
     post:
@@ -212,8 +218,13 @@ paths:
       summary: Register an exception
       description: |
         The DApp should call this method when it cannot proceed with the request processing after an exception happens.
-        This method should be the last method ever called by the DApp backend, and it should not expect the call to return.
-        The Rollup HTTP Server will pass the exception info to the Cartesi Server Manager.
+        This method should be the last method ever called by the DApp backend while processing a request.
+
+        When running in production mode, the Cartesi Server Manager pauses the Cartesi Machine and reverts the entire state of the machine to what it was before receiving the request.
+        No HTTP status code will be sent or received.
+
+        When running in host mode, the Rollup HTTP Server returns the status code 200.
+        In both cases, the input will be skipped with the reason EXCEPTION and the exception message will be forwarded.
 
       requestBody:
         content:
