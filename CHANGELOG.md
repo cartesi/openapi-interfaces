@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1] - 2022-10-28
+
 ### Changed
 
 - Fix typos in the documentation
@@ -46,7 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [0.2.0]
 - [0.1.0]
 
-[unreleased]: https://github.com/cartesi/openapi-interfaces/compare/v0.5.0...HEAD
+[unreleased]: https://github.com/cartesi/openapi-interfaces/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.5.1
 [0.5.0]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.5.0
 [0.4.0]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.4.0
 [0.3.0]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.3.0
