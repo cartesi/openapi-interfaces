@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Replaced inspect metadata with processed input count
+- Renamed voucher address to destination
 
 ## [0.5.1] - 2022-10-28
 

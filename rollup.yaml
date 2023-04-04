@@ -36,7 +36,7 @@ info:
         if rollup_request['request_type'] == 'advance_state':
             print('Sending voucher')
             voucher = {
-                'address': rollup_request['data']['metadata']['msg_sender'],
+                'destination': rollup_request['data']['metadata']['msg_sender'],
                 'payload': rollup_request['data']['payload']
             }
             check_status_code(requests.post(rollup + '/voucher', json=voucher))
@@ -323,7 +323,7 @@ components:
     Voucher:
       type: object
       properties:
-        address:
+        destination:
           $ref: "#/components/schemas/Address"
         payload:
           $ref: "#/components/schemas/Payload"
