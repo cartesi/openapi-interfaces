@@ -203,7 +203,7 @@ paths:
 
       responses:
         "200":
-          description: Create the report.
+          description: Created the report.
 
         default:
           description: Error response.
@@ -278,37 +278,34 @@ components:
       type: object
       properties:
         msg_sender:
-          $ref: "#/components/schemas/Address"
+          type: string
+          description: 20-byte address of the account that submitted the input.
+          example: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
         epoch_index:
-          $ref: "#/components/schemas/Id"
+          type: integer
+          format: uint64
+          description: Deprecated. Always receives 0.
+          example: 0
         input_index:
-          $ref: "#/components/schemas/Id"
+          type: integer
+          format: uint64
+          description: Input index starting from genesis.
+          example: 123
         block_number:
-          $ref: "#/components/schemas/Id"
+          type: integer
+          format: uint64
+          description: Block number when input was posted.
+          example: 10000000
         timestamp:
-          $ref: "#/components/schemas/Timestamp"
-
-    Address:
-      type: string
-      description: Ethereum address.
-      example: "0x1111111111111111111111111111111111111111"
-
-    Id:
-      type: integer
-      format: uint64
-      description: Identifier encoded as an integer.
-      example: 123
-
-    Timestamp:
-      type: integer
-      format: uint64
-      description: Unix timestamp in milliseconds.
-      example: 1609459200000
+          type: integer
+          format: uint64
+          description: Unix timestamp of block in milliseconds.
+          example: 1588598533000
 
     Payload:
       type: string
       description: |
-        The payload in the Ethereum hex binary format.
+        The payload is in the Ethereum hex binary format.
         The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
         For instance, '0xdeadbeef' corresponds to a payload with length 4 and bytes 222, 173, 190, 175.
         An empty payload is represented by the string '0x'.
@@ -324,9 +321,19 @@ components:
       type: object
       properties:
         destination:
-          $ref: "#/components/schemas/Address"
+          type: string
+          description: 20-byte address of the destination contract for which the payload will be sent.
+          example: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
         payload:
-          $ref: "#/components/schemas/Payload"
+          type: string
+          description: |
+            String in Ethereum hex binary format describing a method call to be executed by the destination contract.
+            The first two characters are '0x' followed by pairs of hexadecimal numbers that correspond to one byte.
+            For instance, '0xcdcd77c0' corresponds to a payload with length 4 and bytes 205, 205, 119, 192.
+            To describe the method call, the payload should consist of a function selector (method identifier) followed
+            by its ABI-encoded arguments.
+            ref: https://docs.soliditylang.org/en/v0.8.19/abi-spec.html
+          example: "0xcdcd77c000000000000000000000000000000000000000000000000000000000000000450000000000000000000000000000000000000000000000000000000000000001"
 
     Notice:
       type: object
@@ -350,13 +357,10 @@ components:
       type: object
       properties:
         index:
-          $ref: "#/components/schemas/Index"
-
-    Index:
-      type: integer
-      format: uint64
-      description: Position in the Merkle tree.
-      example: 123
+          type: integer
+          format: uint64
+          description: Position in the Merkle tree.
+          example: 123
 
     Error:
       type: string
