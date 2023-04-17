@@ -9,7 +9,7 @@
 # CONDITIONS OF ANY KIND, either express or implied. See the License for the
 # specific language governing permissions and limitations under the License.
 
-SWAGGER_CODEGEN_VERSION := 3.0.34
+SWAGGER_CODEGEN_VERSION := 3.0.42
 SWAGGER_CODEGEN_URL := https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/$(SWAGGER_CODEGEN_VERSION)/swagger-codegen-cli-$(SWAGGER_CODEGEN_VERSION).jar
 SWAGGER_CODEGEN := swagger-codegen-cli.jar
 
