@@ -252,6 +252,8 @@ components:
           type: string
           enum: [accept, reject]
           example: "accept"
+      required:
+        - status
 
     RollupRequest:
       type: object
@@ -265,6 +267,9 @@ components:
           oneOf:
             - $ref: "#/components/schemas/Advance"
             - $ref: "#/components/schemas/Inspect"
+      required:
+        - request_type
+        - data
 
     Advance:
       type: object
@@ -273,6 +278,9 @@ components:
           $ref: "#/components/schemas/Metadata"
         payload:
           $ref: "#/components/schemas/Payload"
+      required:
+        - metadata
+        - payload
 
     Metadata:
       type: object
@@ -301,6 +309,12 @@ components:
           format: uint64
           description: Unix timestamp of block in milliseconds.
           example: 1588598533000
+      required:
+        - msg_sender
+        - epoch_index
+        - input_index
+        - block_number
+        - timestamp
 
     Payload:
       type: string
@@ -316,6 +330,8 @@ components:
       properties:
         payload:
           $ref: "#/components/schemas/Payload"
+      required:
+        - payload
 
     Voucher:
       type: object
@@ -334,24 +350,33 @@ components:
             by its ABI-encoded arguments.
             ref: https://docs.soliditylang.org/en/v0.8.19/abi-spec.html
           example: "0xcdcd77c000000000000000000000000000000000000000000000000000000000000000450000000000000000000000000000000000000000000000000000000000000001"
+      required:
+        - destination
+        - payload
 
     Notice:
       type: object
       properties:
         payload:
           $ref: "#/components/schemas/Payload"
+      required:
+        - payload
 
     Report:
       type: object
       properties:
         payload:
           $ref: "#/components/schemas/Payload"
+      required:
+        - payload
 
     Exception:
       type: object
       properties:
         payload:
           $ref: "#/components/schemas/Payload"
+      required:
+        - payload
 
     IndexResponse:
       type: object
@@ -361,6 +386,8 @@ components:
           format: uint64
           description: Position in the Merkle tree.
           example: 123
+      required:
+        - index
 
     Error:
       type: string
