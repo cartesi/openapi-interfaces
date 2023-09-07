@@ -112,6 +112,11 @@ paths:
 
         "202":
           description: Finish accepted but try again to obtain the next request.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "no rollup request available"
 
         default:
           description: Error response.
