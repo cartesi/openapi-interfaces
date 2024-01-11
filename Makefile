@@ -15,7 +15,7 @@ SWAGGER_CODEGEN := swagger-codegen-cli.jar
 
 .PHONY: all
 
-DOCS := docs/rollup docs/inspect
+DOCS := docs/rollup
 
 all: $(DOCS)
 

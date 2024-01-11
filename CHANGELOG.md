@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Removed inspect-state HTTP API
+
 ## [0.6.0] - 2023-04-18
 
 ### Changed
