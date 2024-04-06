@@ -101,6 +101,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Finish"
+        required: true
 
       responses:
         "200":
@@ -142,6 +143,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Voucher"
+        required: true
 
       responses:
         "200":
@@ -175,6 +177,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Notice"
+        required: true
 
       responses:
         "200":
@@ -205,6 +208,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Report"
+        required: true
 
       responses:
         "200":
@@ -236,6 +240,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Exception"
+        required: true
 
       responses:
         "200":
