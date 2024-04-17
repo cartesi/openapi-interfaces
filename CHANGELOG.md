@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unrelesed
 
+## [0.7.3] - 2024-04-17
+
+### Changed
+
+- Add format hex to voucher payload
+
 ## [0.7.2] - 2024-04-16
 
 ### Changed
@@ -75,7 +81,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [0.2.0]
 - [0.1.0]
 
-[unreleased]: https://github.com/cartesi/openapi-interfaces/compare/v0.7.2...HEAD
+[unreleased]: https://github.com/cartesi/openapi-interfaces/compare/v0.7.3...HEAD
+[0.7.3]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.7.3
 [0.7.2]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.7.2
 [0.7.1]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.7.1
 [0.7.0]: https://github.com/cartesi/openapi-interfaces/releases/tag/v0.7.0
