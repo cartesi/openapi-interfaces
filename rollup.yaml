@@ -366,6 +366,7 @@ components:
             by its ABI-encoded arguments.
             ref: https://docs.soliditylang.org/en/v0.8.19/abi-spec.html
           example: "0xcdcd77c000000000000000000000000000000000000000000000000000000000000000450000000000000000000000000000000000000000000000000000000000000001"
+          format: hex
       required:
         - destination
         - payload
