@@ -361,6 +361,11 @@ components:
           format: uint64
           description: Unix timestamp of block in milliseconds.
           example: 1588598533000
+        prev_randao:
+          type: integer
+          format: uint64
+          description: The latest RANDAO mix of the post beacon state of the previous block.
+          example: 1588598533000
       required:
         - chain_id
         - app_contract
@@ -369,6 +374,7 @@ components:
         - input_index
         - block_number
         - block_timestamp
+        - prev_randao
 
     Payload:
       type: string
