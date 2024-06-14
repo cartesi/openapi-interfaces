@@ -146,7 +146,7 @@ paths:
         required: true
 
       responses:
-        "201":
+        "200":
           description: Created the voucher.
           content:
             application/json:
@@ -211,7 +211,7 @@ paths:
         required: true
 
       responses:
-        "202":
+        "200":
           description: Created the report.
 
         default:
