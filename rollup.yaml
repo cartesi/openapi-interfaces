@@ -364,7 +364,7 @@ components:
         prev_randao:
           type: string
           format: hex
-          pattern: "^0x([0-9a-fA-F]{2})*$"
+          pattern: "^0x([0-9a-fA-F]{64})$"
           description: The latest RANDAO mix of the post beacon state of the previous block.
           example: 1588598533000
       required:
