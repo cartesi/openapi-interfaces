@@ -431,15 +431,18 @@ components:
       properties:
         destination:
           type: string
-          description: 20-byte address of the destination contract for which the payload will be sent.
+          description: |
+            20-byte Ethereum address that will receive the payload execution.
+            This can be a smart contract (for method calls) or a user address (e.g., for ETH or token transfers).
           example: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
           pattern: "^0x([0-9a-fA-F]{40})$"
           format: address
         value:
           type: string
-          description: A big-endian 32-byte unsigned integer in hex.
+          description: A big-endian 32-byte unsigned integer in hex. Optional. Defaults to zero.
           example: "0x0000000000000000000000000000000000000000000000000000000000000001"
           pattern: "^0x([0-9a-fA-F]{64})$"
+          default: "0x0000000000000000000000000000000000000000000000000000000000000000"
           format: hex
         payload:
           type: string
@@ -454,7 +457,6 @@ components:
           format: hex
       required:
         - destination
-        - value
         - payload
 
     DelegateCallVoucher:
